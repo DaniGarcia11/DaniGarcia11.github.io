@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f7fa;
+            background-color: #e9ecef;
             margin: 0;
             padding: 20px;
         }
@@ -19,15 +19,16 @@
             margin: auto;
             background: white;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         .container:hover {
             transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
         .error-message {
-            color: red;
+            color: #dc3545;
             text-align: center;
             margin-top: 10px;
             display: none;
@@ -35,7 +36,10 @@
         #precioTotal {
             font-weight: bold;
             color: #28a745;
-            font-size: 18px;
+            font-size: 20px;
+        }
+        .form-group label {
+            font-weight: 600;
         }
     </style>
 </head>
@@ -43,45 +47,45 @@
 
     <div class="container">
         <header>
-            <h1 class="text-2xl font-bold text-center">Sistema de Compra</h1>
+            <h1 class="text-3xl font-bold text-center text-gray-800">Sistema de Compra</h1>
         </header>
 
         <!-- Formulario de Inicio de Sesión -->
         <div id="loginForm">
-            <h2 class="text-xl font-semibold text-center">Iniciar Sesión</h2>
-            <input type="text" id="username" placeholder="Nombre de usuario" required class="w-full p-3 border border-gray-300 rounded mt-2">
-            <input type="password" id="password" placeholder="Contraseña" required class="w-full p-3 border border-gray-300 rounded mt-2">
-            <button id="loginButton" class="w-full p-3 bg-blue-500 text-white rounded mt-4 hover:bg-blue-600 transition">Iniciar Sesión</button>
+            <h2 class="text-2xl font-semibold text-center text-gray-700">Iniciar Sesión</h2>
+            <input type="text" id="username" placeholder="Nombre de usuario" required class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="password" id="password" placeholder="Contraseña" required class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button id="loginButton" class="w-full p-3 bg-blue-600 text-white rounded mt-4 hover:bg-blue-700 transition">Iniciar Sesión</button>
             <div id="errorMessage" class="error-message">Usuario o contraseña incorrectos</div>
         </div>
 
         <!-- Formulario de Compra -->
         <div id="purchaseForm" style="display: none;">
-            <h2 class="text-xl font-semibold text-center">Formulario de Compra</h2>
+            <h2 class="text-2xl font-semibold text-center text-gray-700">Formulario de Compra</h2>
             <form id="cajaCompra" action="https://formspree.io/f/mrbpljpr" method="POST">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre" class="w-full p-3 border border-gray-300 rounded mt-2">
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre" class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <div class="form-group">
                     <label for="apellido">Apellido:</label>
-                    <input type="text" id="apellido" name="apellido" required placeholder="Ingresa tu apellido" class="w-full p-3 border border-gray-300 rounded mt-2">
+                    <input type="text" id="apellido" name="apellido" required placeholder="Ingresa tu apellido" class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <div class="form-group">
                     <label for="correo">Correo Electrónico:</label>
-                    <input type="email" id="correo" name="correo" required placeholder="Ingresa tu correo electrónico" class="w-full p-3 border border-gray-300 rounded mt-2">
+                    <input type="email" id="correo" name="correo" required placeholder="Ingresa tu correo electrónico" class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <div class="form-group">
                     <label for="alto">Alto (cm):</label>
-                    <input type="number" id="alto" name="alto" required min="1" placeholder="Ingresa el alto en cm" class="w-full p-3 border border-gray-300 rounded mt-2">
+                    <input type="number" id="alto" name="alto" required min="1" placeholder="Ingresa el alto en cm" class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <div class="form-group">
                     <label for="url">URL del Producto:</label>
-                    <input type="url" id="url" name="url" required placeholder="Ingresa la URL del producto" class="w-full p-3 border border-gray-300 rounded mt-2">
+                    <input type="url" id="url" name="url" required placeholder="Ingresa la URL del producto" class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 </div>
 
                 <div class="form-group">
@@ -96,13 +100,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Información adicional para la impresión:</label>
+                    <textarea id="informacion" name="informacion" placeholder="Escribe aquí cualquier información útil para tu impresión..." class="w-full p-3 border border-gray-300 rounded mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
                     <label>Precio Total: <span id="precioTotal">0.00€</span></label>
                 </div>
 
                 <input type="hidden" id="precio" name="precio" value="0.00">
 
                 <div class="form-group">
-                    <button type="submit" class="w-full p-3 bg-green-500 text-white rounded mt-4 hover:bg-green-600 transition">Enviar Formulario</button>
+                    <button type="submit" class="w-full p-3 bg-green-600 text-white rounded mt-4 hover:bg-green-700 transition">Enviar Formulario</button>
                 </div>
             </form>
         </div>
@@ -175,6 +184,15 @@
             coloresInput.name = 'colores'; // Nombre del campo que se enviará
             coloresInput.value = coloresString; // Valor de los colores seleccionados
             this.appendChild(coloresInput); // Añadir el campo al formulario
+
+            // Recoger la información adicional
+            const informacionInput = document.getElementById('informacion');
+            const informacionValue = informacionInput.value;
+            const informacionHiddenInput = document.createElement('input');
+            informacionHiddenInput.type = 'hidden';
+            informacionHiddenInput.name = 'informacion'; // Nombre del campo que se enviará
+            informacionHiddenInput.value = informacionValue; // Valor de la información adicional
+            this.appendChild(informacionHiddenInput); // Añadir el campo al formulario
 
             // Si todo es válido, enviar el formulario
             this.submit();
