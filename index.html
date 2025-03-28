@@ -41,6 +41,29 @@
         .form-group label {
             font-weight: 600;
         }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.2500%;
+            padding-bottom: 0;
+            box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16);
+            margin-top: 1.6em;
+            margin-bottom: 0.9em;
+            overflow: hidden;
+            border-radius: 8px;
+            will-change: transform;
+        }
+        .video-container iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +81,12 @@
             <button id="loginButton" class="w-full p-3 bg-blue-600 text-white rounded mt-4 hover:bg-blue-700 transition">Iniciar Sesión</button>
             <div id="errorMessage" class="error-message">Usuario o contraseña incorrectos</div>
         </div>
+
+        <!-- Video de Canva -->
+        <div class="video-container">
+            <iframe loading="lazy" src="https://www.canva.com/design/DAGiPwQiEzw/L2j16Z3h44D-BiOvS4HxDw/watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+        </div>
+        <a href="https://www.canva.com/design/DAGiPwQiEzw/L2j16Z3h44D-BiOvS4HxDw/watch?utm_content=DAGiPwQiEzw&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener"></a>
 
         <!-- Formulario de Compra -->
         <div id="purchaseForm" style="display: none;">
